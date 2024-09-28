@@ -4,7 +4,7 @@
 # Computabilidad y Algoritmia
 #
 # @author Javier Garcia Santana
-# @date 28 Jun 2022
+# @date 28 Dec 2020
 # @brief CMakeLists.txt example
 # CMakeLists.txt defines the whole build
 # CMake reads CMakeLists.txt sequentially
@@ -41,5 +41,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 # tell cmake where to look for *.h files
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
-add_executable(bin_exec_name
-/main.cc)
+add_executable(FuncPr
+  src/func_pr.cc
+  src/library.h
+  src/func_pr_main.cc)
