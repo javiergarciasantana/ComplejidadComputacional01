@@ -1,7 +1,7 @@
 # Universidad de La Laguna
 # Escuela Superior de Ingeniería y Tecnología
 # Grado en Ingeniería Informática
-# Computabilidad y Algoritmia
+# Informatica Basica
 #
 # @author Javier Garcia Santana
 # @date 28 Dec 2020
@@ -16,32 +16,28 @@
 #   4. cmake ..
 #   5. make
 
-
 cmake_minimum_required(VERSION 3.1)  # Mandatory
 
-# set the project name 
+# Set the project name
 project(ULL_CARCEL                # Mandatory
     VERSION 1.0
     DESCRIPTION "Saquenme de la ull"
     LANGUAGES CXX)
 
-
-# specify the C++ standard
-set(CMAKE_CXX_STANDARD 17) 						# Use c++17
+# Specify the C++ standard
+set(CMAKE_CXX_STANDARD 17) 
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# tell cmake to output binaries here:
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build)
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+# Set the output directories for binaries and libraries
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
-# Debug and release flags
-set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-
-# tell cmake where to look for *.h files
+# Tell CMake where to look for *.h files
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
-add_executable(FuncPr
-  src/func_pr.cc
-  src/library.h
+# Add the executable target
+add_executable(Func_Pr
   src/func_pr_main.cc)
+
+# Optionally, you can explicitly link any necessary libraries here
+# target_link_libraries(FuncPr <library_name>)

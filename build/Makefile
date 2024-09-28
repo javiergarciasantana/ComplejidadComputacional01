@@ -117,48 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named FuncPr
+# Target rules for targets named Func_Pr
 
 # Build rule for target.
-FuncPr: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 FuncPr
-.PHONY : FuncPr
+Func_Pr: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Func_Pr
+.PHONY : Func_Pr
 
 # fast build rule for target.
-FuncPr/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FuncPr.dir/build.make CMakeFiles/FuncPr.dir/build
-.PHONY : FuncPr/fast
-
-src/func_pr.o: src/func_pr.cc.o
-.PHONY : src/func_pr.o
-
-# target to build an object file
-src/func_pr.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FuncPr.dir/build.make CMakeFiles/FuncPr.dir/src/func_pr.cc.o
-.PHONY : src/func_pr.cc.o
-
-src/func_pr.i: src/func_pr.cc.i
-.PHONY : src/func_pr.i
-
-# target to preprocess a source file
-src/func_pr.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FuncPr.dir/build.make CMakeFiles/FuncPr.dir/src/func_pr.cc.i
-.PHONY : src/func_pr.cc.i
-
-src/func_pr.s: src/func_pr.cc.s
-.PHONY : src/func_pr.s
-
-# target to generate assembly for a file
-src/func_pr.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FuncPr.dir/build.make CMakeFiles/FuncPr.dir/src/func_pr.cc.s
-.PHONY : src/func_pr.cc.s
+Func_Pr/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Func_Pr.dir/build.make CMakeFiles/Func_Pr.dir/build
+.PHONY : Func_Pr/fast
 
 src/func_pr_main.o: src/func_pr_main.cc.o
 .PHONY : src/func_pr_main.o
 
 # target to build an object file
 src/func_pr_main.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FuncPr.dir/build.make CMakeFiles/FuncPr.dir/src/func_pr_main.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Func_Pr.dir/build.make CMakeFiles/Func_Pr.dir/src/func_pr_main.cc.o
 .PHONY : src/func_pr_main.cc.o
 
 src/func_pr_main.i: src/func_pr_main.cc.i
@@ -166,7 +142,7 @@ src/func_pr_main.i: src/func_pr_main.cc.i
 
 # target to preprocess a source file
 src/func_pr_main.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FuncPr.dir/build.make CMakeFiles/FuncPr.dir/src/func_pr_main.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Func_Pr.dir/build.make CMakeFiles/Func_Pr.dir/src/func_pr_main.cc.i
 .PHONY : src/func_pr_main.cc.i
 
 src/func_pr_main.s: src/func_pr_main.cc.s
@@ -174,7 +150,7 @@ src/func_pr_main.s: src/func_pr_main.cc.s
 
 # target to generate assembly for a file
 src/func_pr_main.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FuncPr.dir/build.make CMakeFiles/FuncPr.dir/src/func_pr_main.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Func_Pr.dir/build.make CMakeFiles/Func_Pr.dir/src/func_pr_main.cc.s
 .PHONY : src/func_pr_main.cc.s
 
 # Help Target
@@ -185,10 +161,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... FuncPr"
-	@echo "... src/func_pr.o"
-	@echo "... src/func_pr.i"
-	@echo "... src/func_pr.s"
+	@echo "... Func_Pr"
 	@echo "... src/func_pr_main.o"
 	@echo "... src/func_pr_main.i"
 	@echo "... src/func_pr_main.s"

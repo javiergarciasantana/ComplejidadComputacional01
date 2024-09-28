@@ -8,37 +8,52 @@
 class Zero : public PrimitiveRecursive {
 public:
     int baseCase(int x) override {
-      return 0; // Base case for zero is identity function: z(x) = 0
+        return 0; // Base case for zero is the identity function: z(x) = 0
     }
 };
 
-// Primitive Recursive Function for Sucessor
-class Sucessor : public PrimitiveRecursive {
+// Primitive Recursive Function for Successor
+class Successor : public PrimitiveRecursive {
 public:
     int baseCase(int x) override {
-      return x + 1; // Base case for sucessor is identity function: s(x) = x + 1
+        return x + 1; // Successor function: s(x) = x + 1
     }
-}
+};
 
 // Primitive Recursive Function for One
 class One : public PrimitiveRecursive {
 public:
     int baseCase(int x) override {
-      return Sucessor::baseCase(Zero::baseCase(x)); // Base case for one is identity function: one(x) = s o z
+        Successor successor;
+        Zero zero;
+        return successor.baseCase(zero.baseCase(x)); // One function: one(x) = s(z(x))
     }
 };
 
 // Primitive Recursive Function for Addition
 class Addition : public PrimitiveRecursive {
 public:
-    int baseCase(int x, int y) override {
-      return x; // Base case for addition is identity function: f(x, 0) = g(x)
+
+    int baseCase(int x) {
+        return baseCase(x, x); 
     }
 
-    int recursiveCase(int x, int y) override {
-      return evaluate(x, Sucessor::baseCase(y)); // Addition via successor: f(x, s(y)) = x + (y + 1)
+    // Base case: when y is 0, f(x, 0) = x
+    int baseCase(int x, int y) {
+        return x; 
+    }
+
+    // Recursive case: when y > 0, f(x, s(y)) = s(f(x, y)) or f(x, y+1) = f(x, y) + 1
+    int recursiveCase(int x, int y) {
+        Successor successor;
+        if (y == 0) {
+            return baseCase(x, y); // If y is 0, return base case
+        } else {
+            return successor.recursiveCase(x, y - 1); // f(x, y+1) = s(f(x, y))
+        }
     }
 };
+
 
 // Primitive Recursive Function for Multiplication
 // class Multiplication : public PrimitiveRecursive {
