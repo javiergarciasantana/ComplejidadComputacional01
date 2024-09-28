@@ -3,18 +3,22 @@
 #define FUNC_PR_H
 
 class PrimitiveRecursive {
-public:
-    virtual int baseCase(int n) = 0;     // Pure virtual for base case (identity)
-    virtual int recursiveCase(int n) = 0; // Pure virtual for recursive case
+ public:
+  virtual int baseCase(int x) = 0;     // Pure virtual for base case (identity)
+  virtual int recursiveCase(int x) = 0; // Pure virtual for recursive case
 
-    // The main function that evaluates the primitive recursive function
-    int evaluate(int n) {
-        if (n == 0) {
-            return baseCase(n);
-        } else {
-            return recursiveCase(n);
-        }
+  virtual int baseCase(int x, int y) = 0;     // Pure virtual for base case (identity)
+  virtual int recursiveCase(int x, int y) = 0; // Pure virtual for recursive case
+
+  // The main function that evaluates the primitive recursive function
+
+  int evaluate(int x, int y = 0) {
+    if (y == 0) {
+      return baseCase(x, y);
+    } else {
+      return recursiveCase(x, y);
     }
+  }
 };
 
 #endif
