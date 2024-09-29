@@ -1,10 +1,10 @@
 # Universidad de La Laguna
 # Escuela Superior de Ingeniería y Tecnología
 # Grado en Ingeniería Informática
-# Informatica Basica
+# Computabilidad y Algoritmia
 #
 # @author Javier Garcia Santana
-# @date 28 Dec 2020
+# @date 28 Jun 2022
 # @brief CMakeLists.txt example
 # CMakeLists.txt defines the whole build
 # CMake reads CMakeLists.txt sequentially
@@ -16,28 +16,46 @@
 #   4. cmake ..
 #   5. make
 
+
 cmake_minimum_required(VERSION 3.1)  # Mandatory
 
-# Set the project name
+# set the project name 
 project(ULL_CARCEL                # Mandatory
     VERSION 1.0
     DESCRIPTION "Saquenme de la ull"
     LANGUAGES CXX)
 
-# Specify the C++ standard
-set(CMAKE_CXX_STANDARD 17) 
+
+# specify the C++ standard
+set(CMAKE_CXX_STANDARD 17) 						# Use c++17
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Set the output directories for binaries and libraries
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
+# tell cmake to output binaries here:
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
-# Tell CMake where to look for *.h files
+# Debug and release flags
+set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
+# tell cmake where to look for *.h files
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
-# Add the executable target
-add_executable(Func_Pr
-  src/func_pr_main.cc)
 
-# Optionally, you can explicitly link any necessary libraries here
-# target_link_libraries(FuncPr <library_name>)
+# List of source files
+set(SOURCES
+  src/func_pr_main.cc
+)
+
+# List of header files (not required by CMake, but for clarity/documentation)
+set(HEADERS
+  src/func_pr.h
+  src/library.h
+)
+
+# Add the executable (source files only)
+add_executable(Func_pr ${SOURCES})
+
+# Optionally add header files to the target for IDEs
+# This is not required but helps IDEs recognize headers as part of the project
+target_sources(Func_pr PRIVATE ${HEADERS})

@@ -35,12 +35,12 @@ class Addition : public PrimitiveRecursive {
 public:
 
     int baseCase(int x) {
-        return baseCase(x, x); 
+      return baseCase(x, x); 
     }
 
     // Base case: when y is 0, f(x, 0) = x
     int baseCase(int x, int y) {
-        return x; 
+      return x; 
     }
 
     // Recursive case: when y > 0, f(x, s(y)) = s(f(x, y)) or f(x, y+1) = f(x, y) + 1
@@ -49,22 +49,47 @@ public:
         if (y == 0) {
             return baseCase(x, y); // If y is 0, return base case
         } else {
-            return successor.recursiveCase(x, y - 1); // f(x, y+1) = s(f(x, y))
+            return successor.baseCase(evaluate(x, y - 1)); // f(x, y+1) = s(f(x, y))
         }
     }
 };
 
+//Primitive Recursive Function for Product
+class Product : public PrimitiveRecursive {
+public:
 
-// Primitive Recursive Function for Multiplication
-// class Multiplication : public PrimitiveRecursive {
-// public:
-//     int baseCase(int n) override {
-//       return 0; // Base case for multiplication: f(0, y) = 0
-//     }
+    int baseCase(int x) {
+      return baseCase(x, x); 
+    }
 
-//     int recursiveCase(int n) override {
-//       return evaluate(n - 1) + evaluate(n); // Recursive case: f(n+1, y) = f(n, y) + y
-//     }
-// };
+    int baseCase(int x, int y) override {
+      Zero zero;
+      return zero.baseCase(x); // Base case for multiplication: f(0, y) = 0
+    }
+
+    int recursiveCase(int x, int y) override {
+      Addition addition;
+      return addition.recursiveCase(x, evaluate(x, y - 1)); // Recursive case: f(n+1, y) = f(n, y) + y
+    }
+};
+
+//Primitive Recursive Function for Power
+class Power : public PrimitiveRecursive {
+public:
+
+    int baseCase(int x) {
+      return baseCase(x, x); 
+    }
+
+    int baseCase(int x, int y) override {
+      One one;
+      return one.baseCase(x); // Base case for power: f(0, y) = 1
+    }
+
+    int recursiveCase(int x, int y) override {
+      Product product;
+      return product.recursiveCase(x, evaluate(x, y - 1)); // Recursive case: f(n+1, y) = f(n, y) + y
+    }
+};
 
 #endif
