@@ -11,11 +11,13 @@
 #ifndef FUNC_PR_H
 #define FUNC_PR_H
 
+
+int counter = 0; 
+
 class PrimitiveRecursive {
  public:
-  PrimitiveRecursive() : counter_(0) {}
-
-  virtual ~PrimitiveRecursive() = default;  // Virtual destructor for proper cleanup
+  
+  virtual ~PrimitiveRecursive() = default;  // Virtual destructor for cleanup
 
   virtual int baseCase(int x) = 0;     // Pure virtual for base case
 
@@ -24,23 +26,15 @@ class PrimitiveRecursive {
 
   // The main function that evaluates the primitive recursive function
   virtual int evaluate(int x, int y = 0) {
-    ++counter_;
+    ++counter;
     if (y == 0) {
       return baseCase(x);  // Unary base case
     } else {
       return recursiveCase(x, y);  // Recursive case for binary
     }
   }
+  int getCounter() { return counter; }
 
-  int getCounter() const {
-    return counter_;
-  }
-
- protected:
-  void incrementCounter() { ++counter_; }  // Helper to increment counter
-
- private:
-   int counter_;
 };
 
 #endif
